@@ -3,7 +3,7 @@ import Layout from './Layout';
 import { getProducts } from './apiCore';
 import Card from './Card';
 import Search from './Search';
-import home from '../images/nvidia.png';
+import home from '../images/help.jpeg';
 import chip from '../images/chip.png';
 import chip2 from '../images/chip2.png';
 

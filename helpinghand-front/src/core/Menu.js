@@ -26,17 +26,7 @@ const Menu = ({ history }) => (
                 </Link>
             </li>
 
-            <li className="nav-item">
-                <Link
-                    className="nav-link"
-                    style={isActive(history, "/shop")}
-                    to="/shop"
-                >
-                
-                <span style={{margin:"0px 4px"}}><i class="fas fa-shopping-bag"></i></span>
-                    Shop
-                </Link>
-            </li>
+
 
             
 
