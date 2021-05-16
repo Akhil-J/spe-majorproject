@@ -69,6 +69,7 @@ exports.create = (req, res) => {
                     error: errorHandler(err)
                 });
             }
+            logger.info("product created successfully..!!")
             res.json(result);
         });
     });
@@ -152,6 +153,7 @@ exports.list = (req, res) => {
                     error: 'Products not found'
                 });
             }
+            logger.info("products listed successfully");
             res.json(products);
         });
 };

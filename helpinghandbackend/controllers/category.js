@@ -78,6 +78,7 @@ exports.list = (req, res) => {
                 error: errorHandler(err)
             });
         }
+        logger.info("categories listed successfully..");
         res.json(data);
     });
 };

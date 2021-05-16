@@ -18,6 +18,7 @@ exports.signup = (req, res) => {
         }
         user.salt = undefined;
         user.hashed_password = undefined;
+
         res.json({
             user
         });
@@ -49,6 +50,7 @@ exports.signin = (req, res) => {
     const { email, password } = req.body;
     User.findOne({ email }, (err, user) => {
         if (err || !user) {
+            logger.info(" Email already exists.Failed to signup");
             return res.status(400).json({
                 error: 'User with that email does not exist. Please signup'
             });
@@ -56,6 +58,7 @@ exports.signin = (req, res) => {
         // if user is found make sure the email and password match
         // create authenticate method in user model
         if (!user.authenticate(password)) {
+            logger.info("email and password do not match")
             return res.status(401).json({
                 error: 'Email and password dont match'
             });
@@ -71,8 +74,10 @@ exports.signin = (req, res) => {
 };
 
 exports.signout = (req, res) => {
+    logger.info("Signout success");
     res.clearCookie('t');
     res.json({ message: 'Signout success' });
+
 };
 
 exports.requireSignin = expressJwt({
