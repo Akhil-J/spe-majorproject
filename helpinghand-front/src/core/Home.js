@@ -3,9 +3,9 @@ import Layout from './Layout';
 import { getProducts } from './apiCore';
 import Card from './Card';
 import Search from './Search';
-import home from '../images/help.jpeg';
-import chip from '../images/chip.png';
-import chip2 from '../images/chip2.png';
+import home from '../images/savefood.png';
+import chip from '../images/donatefoodanime.jpeg';
+import chip2 from '../images/fooddonation.jpeg';
 
 const Home = () => {
     const [productsBySell, setProductsBySell] = useState([]);
@@ -53,22 +53,19 @@ const Home = () => {
                 <div class="carousel-item">
                     <img src={home} class="d-block w-100" alt="home" style={{height:"40vh"}}/>
                     <div class="carousel-caption d-none d-md-block">
-                    <h5>First slide label</h5>
-                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+
                     </div>
                 </div>
                 <div class="carousel-item active">
                     <img src={chip} class="d-block w-100" alt="chip" style={{height:"40vh"}}/>
                     <div class="carousel-caption d-none d-md-block">
-                    <h5>Second slide label</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img src={chip2} class="d-block w-100" alt="chip2" style={{height:"40vh"}}/>
                     <div class="carousel-caption d-none d-md-block">
-                    <h5>Third slide label</h5>
-                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+
                     </div>
                 </div>
                 </div>
