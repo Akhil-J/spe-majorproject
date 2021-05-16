@@ -2,6 +2,7 @@ const User = require('../models/user');
 const jwt = require('jsonwebtoken'); // to generate signed token
 const expressJwt = require('express-jwt'); // for authorization check
 const { errorHandler } = require('../helpers/dbErrorHandler');
+const logger = require("../logger");
 
 // using promise
 exports.signup = (req, res) => {
@@ -9,6 +10,7 @@ exports.signup = (req, res) => {
     const user = new User(req.body);
     user.save((err, user) => {
         if (err) {
+            logger.info("email is already taken")
             return res.status(400).json({
                 // error: errorHandler(err)
                 error: 'Email is taken'

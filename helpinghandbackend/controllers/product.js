@@ -3,16 +3,20 @@ const _ = require('lodash');
 const fs = require('fs');
 const Product = require('../models/product');
 const { errorHandler } = require('../helpers/dbErrorHandler');
+const logger = require("../logger");
 
 exports.productById = (req, res, next, id) => {
     Product.findById(id)
         .populate('category')
         .exec((err, product) => {
             if (err || !product) {
+                logger.info("product not found ")
                 return res.status(400).json({
+
                     error: 'Product not found'
                 });
             }
+            logger.info("product found");
             req.product = product;
             next();
         });
@@ -35,7 +39,8 @@ exports.create = (req, res) => {
         // check for all fields
         const { name, description, price, category, quantity, shipping } = fields;
 
-        if (!name || !description || !price || !category || !quantity || !shipping) {
+        if (!name || !description  || !category || !quantity || !shipping) {
+            logger.info("all fields for product are required");
             return res.status(400).json({
                 error: 'All fields are required'
             });
@@ -77,6 +82,7 @@ exports.remove = (req, res) => {
                 error: errorHandler(err)
             });
         }
+        logger.info("product deleted succesfully")
         res.json({
             message: 'Product deleted successfully'
         });
@@ -102,6 +108,7 @@ exports.update = (req, res) => {
         if (files.photo) {
             // console.log("FILES PHOTO: ", files.photo);
             if (files.photo.size > 1000000) {
+                logger.info("image should be less than 1mb");
                 return res.status(400).json({
                     error: 'Image should be less than 1mb in size'
                 });
@@ -116,6 +123,7 @@ exports.update = (req, res) => {
                     error: errorHandler(err)
                 });
             }
+            logger.info("product saved succesfully");
             res.json(result);
         });
     });

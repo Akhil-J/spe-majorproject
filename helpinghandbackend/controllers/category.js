@@ -1,6 +1,7 @@
 const Category = require('../models/category');
 const Product = require('../models/product');
 const { errorHandler } = require('../helpers/dbErrorHandler');
+const logger = require("../logger");
 
 exports.categoryById = (req, res, next, id) => {
     Category.findById(id).exec((err, category) => {
@@ -18,10 +19,12 @@ exports.create = (req, res) => {
     const category = new Category(req.body);
     category.save((err, data) => {
         if (err) {
+            logger.info("cannot create category");
             return res.status(400).json({
                 error: errorHandler(err)
             });
         }
+        logger.info("category created succesfully")
         res.json({ data });
     });
 };

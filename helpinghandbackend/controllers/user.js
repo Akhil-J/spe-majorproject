@@ -1,6 +1,7 @@
 const User = require('../models/user');
 const { Order } = require('../models/order');
 const { errorHandler } = require('../helpers/dbErrorHandler');
+const logger = require("../logger");
 
 exports.userById = (req, res, next, id) => {
     User.findById(id).exec((err, user) => {
@@ -41,11 +42,13 @@ exports.update = (req, res) => {
 
     User.findOne({ _id: req.profile._id }, (err, user) => {
         if (err || !user) {
+            logger.info("user with this ID does not exist");
             return res.status(400).json({
                 error: 'User not found'
             });
         }
         if (!name) {
+            logger.info("name is required");
             return res.status(400).json({
                 error: 'Name is required'
             });
@@ -55,6 +58,7 @@ exports.update = (req, res) => {
 
         if (password) {
             if (password.length < 6) {
+                logger.info("password should be more than 6 characters");
                 return res.status(400).json({
                     error: 'Password should be min 6 characters long'
                 });
