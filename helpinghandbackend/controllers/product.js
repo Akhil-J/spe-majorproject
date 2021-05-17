@@ -171,6 +171,7 @@ exports.listRelated = (req, res) => {
         .populate('category', '_id name')
         .exec((err, products) => {
             if (err) {
+                logger.info("product not found");
                 return res.status(400).json({
                     error: 'Products not found'
                 });

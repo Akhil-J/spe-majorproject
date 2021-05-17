@@ -1,0 +1,11 @@
+2021-05-17 13:23:44[auth.js] info: "email is already taken"
+2021-05-17 13:23:44[auth.js] info: {"error":"Email is taken"}
+2021-05-17 13:23:44[auth.js] info: "login failed"
+2021-05-17 13:25:58[auth.js] info: "categories listed successfully.."
+2021-05-17 13:25:59[auth.js] info: "products listed successfully"
+2021-05-17 13:25:59[auth.js] info: "products listed successfully"
+2021-05-17 13:25:59[auth.js] info: "product found"
+2021-05-17 13:25:59[auth.js] info: "product found"
+2021-05-17 13:25:59[auth.js] info: "product found"
+2021-05-17 13:25:59[auth.js] info: "product found"
+2021-05-17 13:25:59[auth.js] info: "product found"
